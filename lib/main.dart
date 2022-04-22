@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'themes.dart' as themes;
 void main() {
   runApp(const MyApp());
 }
@@ -13,9 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dungeon\'s Oracle',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: themes.projectTheme,
       home: const Home(title: 'Dungeon\'s Oracle'),
     );
   }
@@ -64,19 +62,28 @@ class _HomeState extends State<Home> {
           ),
         ),
 
+        /// Space (Flex) between elements
+        const Spacer(flex:10),
+
         /// Create New Game
         ElevatedButton(
             onPressed: () {},
             child:
               const Text('Create New Game'),
-
         ),
+
+        /// Space (Flex) between elements
+        const Spacer(flex:1),
+
         /// Open Existing Game
         ElevatedButton(
             onPressed: () {},
             child:
               const Text ('Open Existing Game'),
         ),
+
+        /// Empty Space
+        const Spacer(flex:100),
       ],
     );
   }
