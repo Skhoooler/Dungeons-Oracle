@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'themes.dart' as themes;
+
+import 'package:dungeons_oracle/Routes/new_game.dart';
+import 'Utils/themes.dart' as themes;
+
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(home: DungeonsOracle()));
 }
 
 /// Root of Application
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class DungeonsOracle extends StatelessWidget {
+  const DungeonsOracle({Key? key}) : super(key: key);
 
   // Root of application
   @override
@@ -20,28 +23,10 @@ class MyApp extends StatelessWidget {
 }
 
 /// Homepage
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,33 +43,45 @@ class _HomeState extends State<Home> {
         const Text(
           'Dungeon\'s Oracle',
           textAlign: TextAlign.center,
-          style: TextStyle(
-          ),
+          style: TextStyle(),
         ),
 
         /// Space (Flex) between elements
-        const Spacer(flex:10),
+        const Spacer(flex: 10),
 
         /// Create New Game
         ElevatedButton(
-            onPressed: () {},
-            child:
-              const Text('Create New Game'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const NewGameRoute()),
+            );
+          },
+          child: const Text('Create New Game'),
         ),
 
         /// Space (Flex) between elements
-        const Spacer(flex:1),
+        const Spacer(flex: 1),
 
         /// Open Existing Game
         ElevatedButton(
-            onPressed: () {},
-            child:
-              const Text ('Open Existing Game'),
+          onPressed: () {},
+          child: const Text('Open Existing Game'),
         ),
 
         /// Empty Space
-        const Spacer(flex:100),
+        const Spacer(flex: 100),
       ],
     );
+  }
+}
+
+/// Create New Game
+class NewGameRoute extends StatelessWidget {
+  const NewGameRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return newGameRoute(context);
   }
 }
