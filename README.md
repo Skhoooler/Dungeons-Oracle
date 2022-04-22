@@ -1,16 +1,32 @@
-# dungeons_oracle
+# Overview
 
-A Flutter App for helping Game Masters keep track of the players and non-player characters in a tabletop game.
+This app provides tabletop Game Masters with tools to better run their games.
+{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
 
-## Getting Started
+{Provide a description of your app.  Describe how to use the app.}
 
-This project is a starting point for a Flutter application.
+{Describe your purpose for creating this app.}
 
-A few resources to get you started if this is your first Flutter project:
+{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the app running and a walkthrough of the code.}
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+[Software Demo Video](http://youtube.link.goes.here)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Development Environment
+
+This app was written in Android Studio using Dart and the Flutter framework.
+{Describe the tools that you used to develop the app}
+
+{Describe the programming language that you used and any libraries.}
+
+# Useful Websites
+
+{Make a list of websites that you found helpful in this project}
+* [Flutter Dev Website](https://flutter.dev)
+* [Web Site Name](http://url.link.goes.here)
+
+# Future Work
+
+{Make a list of things that you need to fix, improve, and add in the future.}
+* Item 1
+* Item 2
+* Item 3
