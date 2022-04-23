@@ -1,6 +1,7 @@
+import 'package:dungeons_oracle/Controllers/addEntity.dart';
 import 'package:flutter/material.dart';
 
-Material newGameRoute (BuildContext context) {
+Material newGameRoute(BuildContext context) {
   return Material(
     child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -48,10 +49,8 @@ Material newGameRoute (BuildContext context) {
 
           /// Enter Players
           Container(
-            width: MediaQuery.of(context).size.width * 85,
-            child: Column(
-
-            ),
+            width: MediaQuery.of(context).size.width * .2,
+            child: addEntity(context),
           ),
         ]),
   );
