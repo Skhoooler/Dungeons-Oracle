@@ -41,7 +41,18 @@ Material newGameRoute (BuildContext context) {
             ],
           ),
 
+          /// Space (in pixels) above Title
+          const SizedBox(
+            height: 50,
+          ),
+
           /// Enter Players
+          Container(
+            width: MediaQuery.of(context).size.width * 85,
+            child: Column(
+
+            ),
+          ),
         ]),
   );
 }
