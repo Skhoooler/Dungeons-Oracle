@@ -20,9 +20,14 @@ Material newGameRoute(BuildContext context) {
               /// Game Name Text Entry
               Container(
                 width: MediaQuery.of(context).size.width * .78,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Colors.blueAccent
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: const TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
                     hintText: 'Game Name',
                   ),
                 ),
@@ -44,12 +49,18 @@ Material newGameRoute(BuildContext context) {
 
           /// Space (in pixels) above Title
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
 
           /// Enter Players
           Container(
-            width: MediaQuery.of(context).size.width * .2,
+            width: MediaQuery.of(context).size.width * .93,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.blueAccent
+              ),
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: addEntity(context),
           ),
         ]),
