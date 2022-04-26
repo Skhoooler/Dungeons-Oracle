@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'colors.dart' as colors;
 
-/// Holds the Themes for the project
-
-final ThemeData projectTheme = _buildProjectTheme();
-
-/// Handles the Project Theme
-ThemeData _buildProjectTheme() {
+/// Dungeon's Oracle Theme
+class DungeonsOracleTheme {
+  static ThemeData get lightTheme {
+    return ThemeData(
+      primaryColor: colors.primaryColor,
+      scaffoldBackgroundColor: colors.backgroundColor,
+      fontFamily: 'Montserrat',
+      buttonTheme: ButtonThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+        buttonColor: colors.secondaryColor,
+      )
+    );
+  }
+}/*ThemeData _buildProjectTheme() {
   return ThemeData(
     colorScheme: ColorScheme.fromSwatch(
       primarySwatch: Colors.deepPurple,
@@ -15,9 +23,10 @@ ThemeData _buildProjectTheme() {
     ),
     textTheme: const TextTheme(bodyText2: TextStyle(color: Color(0x00fdbd0d),))
   );
-  /*return ThemeData.from(
+  return ThemeData.from(
       colorScheme: colors.projectColorScheme,
       textTheme: null,
-  );*/
-}
+  );
+}*/
+
 

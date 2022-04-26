@@ -16,7 +16,7 @@ class DungeonsOracle extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dungeon\'s Oracle',
-      theme: themes.projectTheme,
+      theme: themes.DungeonsOracleTheme.lightTheme,
       home: const Home(title: 'Dungeon\'s Oracle'),
     );
   }
@@ -43,7 +43,7 @@ class Home extends StatelessWidget {
         const Text(
           'Dungeon\'s Oracle',
           textAlign: TextAlign.center,
-          style: TextStyle(),
+          //style: TextStyle(),
         ),
 
         /// Space (Flex) between elements
@@ -54,7 +54,7 @@ class Home extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const NewGameRoute()),
+              MaterialPageRoute(builder: (context) => const NewGame()),
             );
           },
           child: const Text('Create New Game'),
@@ -73,15 +73,5 @@ class Home extends StatelessWidget {
         const Spacer(flex: 100),
       ],
     );
-  }
-}
-
-/// Create New Game
-class NewGameRoute extends StatelessWidget {
-  const NewGameRoute({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return newGameRoute(context);
   }
 }

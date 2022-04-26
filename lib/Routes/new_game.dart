@@ -1,29 +1,41 @@
 import 'package:dungeons_oracle/Controllers/addEntity.dart';
 import 'package:flutter/material.dart';
 
-Material newGameRoute(BuildContext context) {
-  return Material(
-    child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          /// Space (in pixels) above Title
-          const SizedBox(
-            height: 50,
-          ),
+List<Widget> _players = [addEntity()];
 
-          /// Enter Game Name Row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              /// Game Name Text Entry
-              Container(
-                width: MediaQuery.of(context).size.width * .78,
+class NewGame extends StatefulWidget {
+  const NewGame({Key? key}) : super(key: key);
+
+  @override
+  _NewGameState createState() => _NewGameState();
+}
+
+class _NewGameState extends State<NewGame> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            /// Title
+            SizedBox(
+              width: MediaQuery.of(context).size.width * .93,
+              height: 50,
+              child: const Text(
+                'Create New Game',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+
+            /// Enter Game Name
+            Expanded(
+              flex: 1,
+              child: Container(
+                width: MediaQuery.of(context).size.width * .93,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.blueAccent
-                  ),
+                  border: Border.all(color: Colors.blueAccent),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const TextField(
@@ -32,37 +44,49 @@ Material newGameRoute(BuildContext context) {
                   ),
                 ),
               ),
-
-              /// Spacing
-              const SizedBox(
-                width: 5.0,
-              ),
-
-              /// Edit Icon
-              const Icon(
-                Icons.edit,
-                color: Colors.blue,
-                size: 55.0,
-              ),
-            ],
-          ),
-
-          /// Space (in pixels) above Title
-          const SizedBox(
-            height: 20,
-          ),
-
-          /// Enter Players
-          Container(
-            width: MediaQuery.of(context).size.width * .93,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.blueAccent
-              ),
-              borderRadius: BorderRadius.circular(12),
             ),
-            child: addEntity(context),
-          ),
-        ]),
-  );
+
+            /// Player List
+            Expanded(
+                flex: 8,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * .93,
+                  padding: const EdgeInsets.all(4.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.purple),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ListView.builder(
+                      padding: const EdgeInsets.all(4.0),
+                      itemCount: _players.length,
+                      itemBuilder: (context, index) => _players[index]),
+                )),
+
+            /// Add new Player
+            Expanded(
+              flex: 1,
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _players.add(
+                      addEntity(),
+                    );
+                  });
+                },
+                icon: const Icon(
+                  Icons.add,
+                ),
+              ),
+            ),
+
+            /// Continue Button
+            Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Continue'),
+                ))
+          ]),
+    );
+  }
 }

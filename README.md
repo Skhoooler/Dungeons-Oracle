@@ -23,7 +23,7 @@ This app was written in Android Studio using Dart and the Flutter framework.
 {Make a list of websites that you found helpful in this project}
 * [Flutter Dev Website](https://flutter.dev)
 * [A Visual Guide to Input Decorations for Flutter Text Field](https://medium.com/flutter-community/a-visual-guide-to-input-decorations-for-flutter-textfield-706cf1877e25)
-
+* [Themeing a Flutter App](https://www.raywenderlich.com/16628777-theming-a-flutter-app-getting-started)
 # Future Work
 
 {Make a list of things that you need to fix, improve, and add in the future.}
