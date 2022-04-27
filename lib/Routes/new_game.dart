@@ -1,6 +1,9 @@
 import 'package:dungeons_oracle/Controllers/addEntity.dart';
 import 'package:flutter/material.dart';
 
+import '../Utils/customWidgets.dart' as custom_widgets;
+import '../Utils/colors.dart' as colors;
+
 List<Widget> _players = [addEntity()];
 
 class NewGame extends StatefulWidget {
@@ -28,18 +31,16 @@ class _NewGameState extends State<NewGame> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               /// Spacing
-              const SizedBox(height: 5.0,),
+              const SizedBox(
+                height: 5.0,
+              ),
 
               /// Enter Game Name
-              Expanded(
+              const Expanded(
                 flex: 1,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * .93,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blueAccent),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const TextField(
+                child: custom_widgets.DOContainer(
+                  child: TextField(
+                    textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       hintText: 'Game Name',
                     ),
@@ -47,16 +48,15 @@ class _NewGameState extends State<NewGame> {
                 ),
               ),
 
+              /// Spacing
+              const SizedBox(
+                height: 10.0,
+              ),
+
               /// Player List
               Expanded(
                   flex: 8,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * .93,
-                    padding: const EdgeInsets.all(4.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.purple),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                  child: custom_widgets.DOContainer(
                     child: ListView.builder(
                         padding: const EdgeInsets.all(4.0),
                         itemCount: _players.length,
@@ -69,13 +69,17 @@ class _NewGameState extends State<NewGame> {
                 child: IconButton(
                   onPressed: () {
                     setState(() {
+                      _players.add(const SizedBox(
+                        height: 10,
+                      ));
                       _players.add(
                         addEntity(),
                       );
                     });
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.add,
+                    color: colors.accentColor,
                   ),
                 ),
               ),
@@ -89,7 +93,9 @@ class _NewGameState extends State<NewGame> {
                   )),
 
               /// Spacing
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
             ]),
       ),
     );

@@ -1,18 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../Utils/textFieldStyling.dart';
+import '../Utils/customWidgets.dart' as custom_widgets;
+import '../Utils/colors.dart' as colors;
 
 /// Add Entity to Game
 Widget addEntity() {
-  return Container(
-    decoration: BoxDecoration(
-      border: Border.all(
-        color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-      ),
-      borderRadius: BorderRadius.circular(12),
-    ),
+  return custom_widgets.DOContainer(
+    color: colors.primaryColor,
     child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,12 +34,9 @@ Widget addEntity() {
                 flex: 5,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: custom_widgets.DOContainer(
                     height: 155,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.redAccent),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                    color: colors.secondaryColor,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -203,6 +195,7 @@ Container attribute() {
                   disabledBorder: InputBorder.none),
               maxLength: 2,
               textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
             ),
           ),
         ],

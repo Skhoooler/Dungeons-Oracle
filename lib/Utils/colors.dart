@@ -6,11 +6,14 @@ Color? primaryColor     = Colors.purple[900];
 //Color? onPrimaryColor   = Colors.amber[700];
 
 // Secondary Colors
-const Color secondaryColor   = Color(0x004a0d67);
+const Color secondaryColor   = Color(0xFF7645B3);
 //const Color onSecondaryColor = Color(0x004a0d67);
 
 // Accent Colors
 Color? accentColor = const Color(0xFFffdf00);
+
+// Hint Text Color
+Color? hintTextColor = const Color(0xFF938608);
 
 // Error Colors
 const Color errorColor       = Color(0x00df2935);

@@ -25,11 +25,36 @@ class DungeonsOracleTheme {
       /// Text
       fontFamily: 'Montserrat',
       textTheme: ThemeData.light().textTheme.copyWith(
-
-              /// Title
-              headline6: TextStyle(
+          /// Title
+          headline6: TextStyle(
             color: colors.accentColor,
-          )),
+          ),
+
+          /// Body
+          bodyText1: TextStyle(
+            color: colors.accentColor,
+          ),
+          bodyText2: TextStyle(
+            color: colors.accentColor,
+          ),
+
+          /// TextFields
+          subtitle1: TextStyle(
+            color: colors.accentColor,
+      )
+      ),
+
+      /// Text Fields
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(
+          color: colors.hintTextColor,
+        ) ,
+        filled: false,
+      ),
+
+      textSelectionTheme: const TextSelectionThemeData(
+
+      ),
 
       /// Background
       scaffoldBackgroundColor: colors.backgroundColor,
@@ -43,6 +68,9 @@ class DungeonsOracleTheme {
         padding: const EdgeInsets.all(4.0),
       )),
       // More Info: https://www.kindacode.com/article/working-with-elevatedbutton-in-flutter/#Style_Color_Border_Elevation…
+
+      /// Android: Scroll too far color
+      androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
     );
   }
 
