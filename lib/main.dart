@@ -30,48 +30,52 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        /// Space (in pixels) above Title
-        const SizedBox(
-          height: 35,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dungeon\'s Oracle'),
+        titleTextStyle: themes.DungeonsOracleTheme.titleTheme,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+            /// Title of Homepage
+            /*const Text(
+              'Dungeon\'s Oracle',
+              textAlign: TextAlign.center,
+              //style: TextStyle(),
+            ),*/
+
+            /// Space (Flex) between elements
+            const Spacer(flex: 10),
+
+            /// Create New Game
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const NewGame()),
+                );
+              },
+              child: const Text('Create New Game'),
+            ),
+
+            /// Space (Flex) between elements
+            const Spacer(flex: 1),
+
+            /// Open Existing Game
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Open Existing Game'),
+            ),
+
+            /// Empty Space
+            const Spacer(flex: 100),
+          ],
         ),
-
-        /// Title of Homepage
-        const Text(
-          'Dungeon\'s Oracle',
-          textAlign: TextAlign.center,
-          //style: TextStyle(),
-        ),
-
-        /// Space (Flex) between elements
-        const Spacer(flex: 10),
-
-        /// Create New Game
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const NewGame()),
-            );
-          },
-          child: const Text('Create New Game'),
-        ),
-
-        /// Space (Flex) between elements
-        const Spacer(flex: 1),
-
-        /// Open Existing Game
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text('Open Existing Game'),
-        ),
-
-        /// Empty Space
-        const Spacer(flex: 100),
-      ],
+      ),
     );
   }
 }

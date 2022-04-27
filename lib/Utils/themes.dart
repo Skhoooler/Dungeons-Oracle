@@ -5,28 +5,55 @@ import 'colors.dart' as colors;
 class DungeonsOracleTheme {
   static ThemeData get lightTheme {
     return ThemeData(
+      /// Brightness
+      brightness: Brightness.light,
+
+      /// Colors
       primaryColor: colors.primaryColor,
-      scaffoldBackgroundColor: colors.backgroundColor,
+
+      /// Appbar
+      appBarTheme: AppBarTheme(
+        color: colors.backgroundColor,
+        foregroundColor: colors.accentColor,
+        iconTheme: IconThemeData(
+          color: colors.accentColor,
+        ),
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+
+      /// Text
       fontFamily: 'Montserrat',
-      buttonTheme: ButtonThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-        buttonColor: colors.secondaryColor,
-      )
+      textTheme: ThemeData.light().textTheme.copyWith(
+
+              /// Title
+              headline6: TextStyle(
+            color: colors.accentColor,
+          )),
+
+      /// Background
+      scaffoldBackgroundColor: colors.backgroundColor,
+
+      /// Buttons
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+        primary: colors.primaryColor,
+        onPrimary: colors.accentColor,
+        fixedSize: const Size(200, 50),
+        padding: const EdgeInsets.all(4.0),
+      )),
+      // More Info: https://www.kindacode.com/article/working-with-elevatedbutton-in-flutter/#Style_Color_Border_Elevation…
     );
   }
-}/*ThemeData _buildProjectTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSwatch(
-      primarySwatch: Colors.deepPurple,
-    ).copyWith(
-      secondary: const Color(0x00fdbd0d),
-    ),
-    textTheme: const TextTheme(bodyText2: TextStyle(color: Color(0x00fdbd0d),))
-  );
-  return ThemeData.from(
-      colorScheme: colors.projectColorScheme,
-      textTheme: null,
-  );
-}*/
 
-
+  static TextStyle get titleTheme {
+    return TextStyle(
+      fontSize: 36,
+      decoration: TextDecoration.underline,
+      decorationStyle: TextDecorationStyle.solid,
+      decorationColor: colors.accentColor,
+      decorationThickness: 2,
+      color: colors.accentColor,
+    );
+  }
+}
