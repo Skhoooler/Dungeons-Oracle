@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:dungeons_oracle/Routes/new_game.dart';
+import 'package:dungeons_oracle/Routes/open_existing_game.dart';
 import 'Utils/themes.dart' as themes;
 
 void main() {
+  // Run App
   runApp(const MaterialApp(home: DungeonsOracle()));
 }
 
@@ -40,7 +42,6 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-
             /// Title of Homepage
             /*const Text(
               'Dungeon\'s Oracle',
@@ -67,7 +68,12 @@ class Home extends StatelessWidget {
 
             /// Open Existing Game
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const OpenExistingGame()));
+              },
               child: const Text('Open Existing Game'),
             ),
 

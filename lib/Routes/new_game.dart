@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../Utils/customWidgets.dart' as custom_widgets;
 import '../Utils/colors.dart' as colors;
+import '../Model/database.dart' as database;
+import '../Model/Game.dart';
+
 
 List<Widget> _players = [addEntity()];
 
@@ -16,6 +19,8 @@ class NewGame extends StatefulWidget {
 class _NewGameState extends State<NewGame> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController gameName = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Create New Game'),
@@ -88,7 +93,9 @@ class _NewGameState extends State<NewGame> {
               Expanded(
                   flex: 1,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+                    },
                     child: const Text('Continue'),
                   )),
 
@@ -100,4 +107,9 @@ class _NewGameState extends State<NewGame> {
       ),
     );
   }
+}
+
+/// Inserts a Game object into the database
+Future<void> insertGame (Game game) async {
+
 }
