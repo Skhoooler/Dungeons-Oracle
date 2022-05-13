@@ -6,8 +6,9 @@ class DOContainer extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? color;
+  final EdgeInsets? margin;
 
-  const DOContainer({Key? key, required this.child, this.width, this.height, this.color})
+  const DOContainer({Key? key, required this.child, this.width, this.height, this.color, this. margin})
       : super(key: key);
 
   @override
@@ -21,6 +22,7 @@ class DOContainer extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         color: color,
       ),
+      margin: margin,
       child: child,
     );
   }

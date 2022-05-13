@@ -1,13 +1,12 @@
-import 'package:dungeons_oracle/Controllers/addEntity.dart';
 import 'package:flutter/material.dart';
 
+import 'package:dungeons_oracle/Model/Entity.dart';
 import '../Utils/customWidgets.dart' as custom_widgets;
 import '../Utils/colors.dart' as colors;
 import '../Model/database.dart' as database;
 import '../Model/Game.dart';
 
-
-List<Widget> _players = [addEntity()];
+List<Entity> _players = [Entity.blank()];
 
 class NewGame extends StatefulWidget {
   const NewGame({Key? key}) : super(key: key);
@@ -41,12 +40,13 @@ class _NewGameState extends State<NewGame> {
               ),
 
               /// Enter Game Name
-              const Expanded(
+              Expanded(
                 flex: 1,
                 child: custom_widgets.DOContainer(
-                  child: TextField(
+                  child: TextFormField(
+                    controller: gameName,
                     textAlign: TextAlign.center,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Game Name',
                     ),
                   ),
@@ -60,13 +60,15 @@ class _NewGameState extends State<NewGame> {
 
               /// Player List
               Expanded(
-                  flex: 8,
-                  child: custom_widgets.DOContainer(
-                    child: ListView.builder(
-                        padding: const EdgeInsets.all(4.0),
-                        itemCount: _players.length,
-                        itemBuilder: (context, index) => _players[index]),
-                  )),
+                flex: 8,
+                child: custom_widgets.DOContainer(
+                  child: ListView.builder(
+                      padding: const EdgeInsets.all(4.0),
+                      itemCount: _players.length,
+                      itemBuilder: (context, index) =>
+                          _players[index].addEntity()),
+                ),
+              ),
 
               /// Add new Player
               Expanded(
@@ -74,12 +76,7 @@ class _NewGameState extends State<NewGame> {
                 child: IconButton(
                   onPressed: () {
                     setState(() {
-                      _players.add(const SizedBox(
-                        height: 10,
-                      ));
-                      _players.add(
-                        addEntity(),
-                      );
+                      _players.add(Entity.blank());
                     });
                   },
                   icon: Icon(
@@ -91,13 +88,15 @@ class _NewGameState extends State<NewGame> {
 
               /// Continue Button
               Expanded(
-                  flex: 1,
-                  child: ElevatedButton(
-                    onPressed: () {
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {
 
-                    },
-                    child: const Text('Continue'),
-                  )),
+                  },
+                  child: const Text("Continue"),
+                  //child: const Text('Continue'),
+                ),
+              ),
 
               /// Spacing
               const SizedBox(
@@ -110,6 +109,4 @@ class _NewGameState extends State<NewGame> {
 }
 
 /// Inserts a Game object into the database
-Future<void> insertGame (Game game) async {
-
-}
+Future<void> insertGame(Game game) async {}

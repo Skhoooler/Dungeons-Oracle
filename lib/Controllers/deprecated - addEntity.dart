@@ -4,6 +4,13 @@ import '../Utils/textFieldStyling.dart';
 import '../Utils/customWidgets.dart' as custom_widgets;
 import '../Utils/colors.dart' as colors;
 
+///////////////////////////////////////////////////
+// Deprecated
+//
+// Use Model/Entity.dart instead
+///////////////////////////////////////////////////
+
+
 /// Add Entity to Game
 Widget addEntity() {
   return custom_widgets.DOContainer(
@@ -131,9 +138,9 @@ Widget addEntity() {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              attribute(),
-                              attribute(),
-                              attribute(),
+                              _attribute(),
+                              _attribute(),
+                              _attribute(),
                             ],
                           ),
                         ),
@@ -148,56 +155,57 @@ Widget addEntity() {
   );
 }
 
-Container attribute() {
+Container _attribute() {
   return Container(
-      height: 45,
-      width: 45,
-      decoration: BoxDecoration(
-        color: Colors.black26,
-        border: Border.all(
-          color: Colors.black54,
-          width: 3,
-        ),
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(12),
-            topRight: Radius.circular(12),
-            bottomLeft: Radius.circular(60),
-            bottomRight: Radius.circular(60)),
+    height: 45,
+    width: 45,
+    decoration: BoxDecoration(
+      color: Colors.black26,
+      border: Border.all(
+        color: Colors.black54,
+        width: 3,
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          /// Attribute Name
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+          bottomLeft: Radius.circular(60),
+          bottomRight: Radius.circular(60)),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        /// Attribute Name
 
-          Expanded(
-            child: TextField(
-              decoration: textFieldDecoration.copyWith(
-                hintText: 'Attr',
+        Expanded(
+          child: TextField(
+            decoration: textFieldDecoration.copyWith(
+              hintText: 'Attr',
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+            ),
+            maxLength: 4,
+            textAlign: TextAlign.center,
+          ),
+        ),
+
+        /// Attribute Value
+        Expanded(
+          child: TextField(
+            decoration: textFieldDecoration.copyWith(
+                hintText: '00',
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-              ),
-              maxLength: 4,
-              textAlign: TextAlign.center,
-            ),
+                disabledBorder: InputBorder.none),
+            maxLength: 2,
+            textAlign: TextAlign.center,
+            keyboardType: TextInputType.number,
           ),
-
-          /// Attribute Value
-          Expanded(
-            child: TextField(
-              decoration: textFieldDecoration.copyWith(
-                  hintText: '00',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none),
-              maxLength: 2,
-              textAlign: TextAlign.center,
-              keyboardType: TextInputType.number,
-            ),
-          ),
-        ],
-      ));
+        ),
+      ],
+    ),
+  );
 }
