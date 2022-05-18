@@ -1,21 +1,36 @@
 # Overview
 
-This app provides tabletop Game Masters with tools to better run their games. It allows a user to add information about their players and other non-player characters and keep track of them throughout the game. The goal of this project is to help me learn mobile app development in Dart using Flutter. I was able to achieve a good grasp of the language through this project, although it is not yet complete. In the completed app, the user will be able to create a new game, and add their players. The game and player data will be saved and stored in a database to be used in the future. When in a game, the user will be able to see all of their players and non-player characters in one screen. When a battle happens, they will be able to see what order the players and non-player characters will act. Although it is not yet complete, I hope to continue development of it and complete it in the near future.
+{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
 
-[Software Demo Video](https://youtu.be/d6MOE9t1lT8)
+{Provide a description the software that you wrote and how it integrates with a SQL Relational Database. Describe how to use your program.}
+
+{Describe your purpose for writing this software.}
+
+{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.}
+
+[Software Demo Video](http://youtube.link.goes.here)
+
+# Relational Database
+
+{Describe the relational database you are using.}
+
+{Describe the structure (tables) of the relational database that you created.}
 
 # Development Environment
 
-This app was written in Android Studio using Dart and the Flutter framework. I attempted to use the SQFLite, path_provider, and async libraries to add database functionality to my app but it did not work as intended, and will be implemented in a future sprint (a database sprint). I did not use any other external libraries besides those three.
+{Describe the tools that you used to develop the software}
+
+{Describe the programming language that you used and any libraries.}
 
 # Useful Websites
 
-* [Flutter Dev Website](https://flutter.dev)
-* [A Visual Guide to Input Decorations for Flutter Text Field](https://medium.com/flutter-community/a-visual-guide-to-input-decorations-for-flutter-textfield-706cf1877e25)
-* [Themeing a Flutter App](https://www.raywenderlich.com/16628777-theming-a-flutter-app-getting-started)
+{Make a list of websites that you found helpful in this project}
+* [Web Site Name](http://url.link.goes.here)
+* [Web Site Name](http://url.link.goes.here)
 
 # Future Work
 
-* Accessing a database 
-* Adding non-player characters
-* Rearanging characters and players 
+{Make a list of things that you need to fix, improve, and add in the future.}
+* Item 1
+* Item 2
+* Item 3

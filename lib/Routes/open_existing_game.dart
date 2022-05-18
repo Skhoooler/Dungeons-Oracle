@@ -47,18 +47,22 @@ class _OpenExistingGameState extends State<OpenExistingGame> {
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     /// Data
                     List<Widget> children;
-                    List<Game> game = snapshot.data;
 
                     /// If the database returned data
                     if (snapshot.hasData) {
-                      children = [
-                        ListView.builder(
-                          itemCount: game.length,
-                          itemBuilder: (context, index) {
-                            return game[index].displayGame();
-                          },
-                        )
-                      ];
+                      if (snapshot.data != null) {
+                        children = [
+                          ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              return snapshot.data[index].displayGame();
+                            },
+                          )
+                        ];
+                      }
+                      else {
+                        children = [];
+                      }
                     }
 
                     /// If the database returns an error

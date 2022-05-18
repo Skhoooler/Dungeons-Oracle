@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:dungeons_oracle/Model/database.dart' as db;
 import 'package:dungeons_oracle/Routes/new_game.dart';
 import 'package:dungeons_oracle/Routes/open_existing_game.dart';
 import 'Utils/themes.dart' as themes;
@@ -16,6 +17,8 @@ class DungeonsOracle extends StatelessWidget {
   // Root of application
   @override
   Widget build(BuildContext context) {
+    db.DatabaseConnection.instance;
+
     return MaterialApp(
       title: 'Dungeon\'s Oracle',
       theme: themes.DungeonsOracleTheme.lightTheme,
