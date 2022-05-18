@@ -11,6 +11,7 @@ class DOContainer extends StatelessWidget {
   const DOContainer({Key? key, required this.child, this.width, this.height, this.color, this. margin})
       : super(key: key);
 
+  /// Custom Container
   @override
   Widget build(BuildContext context) {
     return Container(
