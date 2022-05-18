@@ -91,10 +91,15 @@ class _NewGameState extends State<NewGame> {
                 flex: 1,
                 child: ElevatedButton(
                   onPressed: () {
-
+                    database.DatabaseConnection.saveGame(
+                      Game(
+                          name: gameName.text,
+                          dateStarted: DateTime.now(),
+                          players: _players),
+                    );
+                    Navigator.pop(context);
                   },
                   child: const Text("Continue"),
-                  //child: const Text('Continue'),
                 ),
               ),
 

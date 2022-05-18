@@ -17,5 +17,5 @@ class Game {
     required this.players,
     this.nonPlayerCharacters,
     this.enemies,
-  }) : fightRunning = false;
+  }) : fightRunning = false, lastDatePlayed = dateStarted;
 }

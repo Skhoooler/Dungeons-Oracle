@@ -48,7 +48,7 @@ class DatabaseConnection {
   }
 
   /// Saves a game to the database
-  saveGame(Game game) async {
+  static saveGame(Game game) async {
     Map<String, dynamic> row = {
       'id': game.id,
       'name' : game.name,
@@ -62,6 +62,12 @@ class DatabaseConnection {
 
     await _database?.insert('game', row);
   }
+
+  /// Load all game data from the database
+  /*static List<Game> loadGames() async {
+    List<Game> game = await _database?.query('game');
+    return;
+  }*/
 
   /// Close Database
   Future close() async {
