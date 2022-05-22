@@ -1,36 +1,43 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+Dungeon's Oracle is an app for Dungeon/Game masters to keep track of the initiative order of players in tabletop games that I have been working on for around five weeks now.
 
-{Provide a description the software that you wrote and how it integrates with a SQL Relational Database. Describe how to use your program.}
+Previously, I created this app to learn how to create an app using Dart and the Flutter framework. Now, I used this same app to learn how to use a SQLite database by adding a
+database to the existing app. I created a database class that initializes a database, and has a few static methods to save and load information from the database. The existing app
+had forms for the user to input information about players. The SQL database is called when the user submits a form, and that information is saved to the database. Later, when the user
+wants to get information about different games, the database is queried and the resulting data is parsed and returned to the user.
 
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Dungeon's Oracle Dev Update 1 (Flutter)](https://youtu.be/d6MOE9t1lT8)
+[Dungeon's Oracle Dev Update 2 (SQL)](https://youtu.be/Hw4pzxDYGns)
 
 # Relational Database
 
-{Describe the relational database you are using.}
+In this app, I used a SQLite database in flutter. I created this database using the sqflite library.
 
-{Describe the structure (tables) of the relational database that you created.}
+I created a single table (game), which has eight columns:
+
+* id (primary key)
+* name
+* dateStarted
+* lastDatePlayed
+* players (array)
+* nonPlayerCharacters (array)
+* enemies (array)
+* fightRunning
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+I developed this app in Android Studio using Dart and the Flutter framework. I used the sqflite
+library for access to the SQLite database, path_provider to set the path of the database, and 
+the uuid package to set the id of each game.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Sqflite-Flutter Example from Scratch](https://medium.com/py-bits/sqflite-flutter-example-from-scratch-71afa2ce2ea9)
 * [The ultimate guide to parse JSON](https://codewithandrea.com/articles/parse-json-dart/)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Fix Loading data from the database so it displays
+* Parse the string of player data to a List of player objects
+* Add delete and update support

@@ -2,14 +2,12 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:dungeons_oracle/Model/Game.dart';
 import 'package:dungeons_oracle/Model/Entity.dart';
 
 /// SQLite Database
 class DatabaseConnection {
-
   // Variables
   static Database? _database;
 
@@ -87,31 +85,42 @@ class DatabaseConnection {
   static Future<List<Game>> loadGames() async {
     List<Game> gameData = [];
 
-    try {
-      List<Map<String, dynamic>>? rawData =
-          await _database?.rawQuery('SELECT * FROM game');
+    List<Map<String, dynamic>>? rawData =
+        await _database?.rawQuery('SELECT * FROM game');
 
-      // If rawData is null, set it to empty list
-      rawData ??= [];
+    // If rawData is null, set it to empty list
+    rawData ??= [];
 
-      // Parse rawData into a list of Game objects
-      for (int i = 0; i < rawData.length; i++) {
-        gameData.add(Game.existing(
-            id: rawData[i]["id"],
-            name: rawData[i]["name"],
-            dateStarted: DateTime.parse(rawData[i]["dateStarted"]),
-            lastDatePlayed: DateTime.parse(rawData[i]["lastDatePlayed"]),
+    // Parse rawData into a list of Game objects
+    for (int i = 0; i < rawData.length; i++) {
+      /// Extract list of player entities
+      List<Entity> players = [];
+      for (int j = 0; j < rawData[i]["players"].length; j++) {
+        players.add(Entity.fromJSON(rawData[i]["players"][j]));
+      }
 
-            // JsonDecode returns a list, map each list item to an Entity object
-            // using the Entity.fromJSON constructor, and return a list of them
+      List<Entity> npcs = [];
+      for (int j = 0; j < rawData[i]["nonPlayerCharacters"].length; j++) {}
 
-            //players: rawData[i]["players"].map((player) => {
-            //  Entity.fromJSON(player)
-            //}),
-            players: [],
-            nonPlayerCharacters: [],
-            enemies: [],
-            /*players: jsonDecode(rawData[i]["players"])
+      List<Entity> enemies = [];
+      for (int j = 0; j < rawData[i]["enemies"].length; j++) {}
+
+      gameData.add(Game.existing(
+          id: rawData[i]["id"],
+          name: rawData[i]["name"],
+          dateStarted: DateTime.parse(rawData[i]["dateStarted"]),
+          lastDatePlayed: DateTime.parse(rawData[i]["lastDatePlayed"]),
+
+          // JsonDecode returns a list, map each list item to an Entity object
+          // using the Entity.fromJSON constructor, and return a list of them
+
+          //players: rawData[i]["players"].map((player) => {
+          //  Entity.fromJSON(player)
+          //}),
+          players: [],
+          nonPlayerCharacters: [],
+          enemies: [],
+          /*players: jsonDecode(rawData[i]["players"])
                 .map((playerData) => {Entity.fromJSON(playerData)})
                 .toList(),
             nonPlayerCharacters: jsonDecode(rawData[i]["nonPlayerCharacters"])
@@ -121,13 +130,10 @@ class DatabaseConnection {
                 .map((npcData) => {Entity.fromJSON(npcData)})
                 .toList(),*/
 
-            // If it says "true" then return true, else return false
-            fightRunning: rawData[i]["fightRunning"] == "true" ? true : false));
-      }
-
-    } on Exception catch (e) {
-      print(e);
+          // If it says "true" then return true, else return false
+          fightRunning: rawData[i]["fightRunning"] == "true" ? true : false));
     }
+
     return gameData;
   }
 
