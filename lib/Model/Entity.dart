@@ -5,16 +5,16 @@ import '../Utils/customWidgets.dart' as custom_widgets;
 import '../Utils/colors.dart' as colors;
 
 /// Entity Class stores all of the information about entitites (players, npc, enemies)
-class Entity{
+class Entity {
   //final int _id;
   String name;
   String type;
   String level;
   String health;
-  Map<String, String>? attribute1;
-  Map<String, String>? attribute2;
-  Map<String, String>? attribute3;
-  bool _isAlive;
+  Map<String, String>? attribute1 = {};
+  Map<String, String>? attribute2 = {};
+  Map<String, String>? attribute3 = {};
+  bool _isAlive = true;
   entity_type? entityType;
 
   // Image
@@ -37,11 +37,31 @@ class Entity{
     this.type = "",
     this.level = "",
     this.health = "",
-    this.attribute1,
-    this.attribute2,
-    this.attribute3,
-    this.entityType,
-  }) : _isAlive = true;
+  })  : attribute1 = {},
+        attribute2 = {},
+        attribute3 = {},
+        entityType = entity_type.player,
+        _isAlive = true;
+
+  Entity.fromJSON(Map<String, dynamic> json)
+      : name = json['name'],
+        type = json['type'],
+        level = json['level'],
+        health = json['health'],
+        attribute1 = {
+          json['attribute1']['key'].toString():
+              json['attribute1']['value'].toString()
+        },
+        attribute2 = {
+          json['attribute2']['key'].toString():
+              json['attribute2']['value'].toString()
+        },
+        attribute3 = {
+          json['attribute3']['key'].toString():
+              json['attribute3']['value'].toString()
+        },
+        _isAlive = json['isAlive'] == "true" ? true : false,
+        entityType = json['entityType'];
 
   Widget addEntity() {
     var att1Key;
@@ -236,7 +256,6 @@ class Entity{
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
           /// Attribute Name
           Expanded(
             child: TextFormField(
@@ -244,13 +263,11 @@ class Entity{
                 key = value;
 
                 if (num == 1) {
-                  attribute1 = {key:value};
-                }
-                else if (num == 2) {
-                  attribute2 = {key:value};
-                }
-                else {
-                  attribute3 = {key:value};
+                  attribute1 = {key: value};
+                } else if (num == 2) {
+                  attribute2 = {key: value};
+                } else {
+                  attribute3 = {key: value};
                 }
               },
               decoration: textFieldDecoration.copyWith(
@@ -272,13 +289,11 @@ class Entity{
                 value = val;
 
                 if (num == 1) {
-                  attribute1 = {key:value};
-                }
-                else if (num == 2) {
-                  attribute2 = {key:value};
-                }
-                else {
-                  attribute3 = {key:value};
+                  attribute1 = {key: value};
+                } else if (num == 2) {
+                  attribute2 = {key: value};
+                } else {
+                  attribute3 = {key: value};
                 }
               },
               decoration: textFieldDecoration.copyWith(
@@ -295,6 +310,30 @@ class Entity{
         ],
       ),
     );
+  }
+
+  /// JSON Encode Function
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'type': type,
+      'level': level,
+      'health': health,
+      'attribute1': {
+        'key': attribute1?.keys.first,
+        'value': attribute1?.values.first
+      },
+      'attribute2': {
+        'key': attribute2?.keys.first,
+        'value': attribute2?.values.first
+      },
+      'attribute3': {
+        'key': attribute3?.keys.first,
+        'value': attribute3?.values.first
+      },
+      'isAlive': _isAlive.toString(),
+      'entityType': entityType,
+    };
   }
 }
 

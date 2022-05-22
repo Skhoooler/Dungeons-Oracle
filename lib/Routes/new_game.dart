@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dungeons_oracle/Model/Entity.dart';
 import '../Utils/customWidgets.dart' as custom_widgets;
 import '../Utils/colors.dart' as colors;
-import '../Model/database.dart' as database;
+import '../Model/database.dart' as db;
 import '../Model/Game.dart';
 
 List<Entity> _players = [Entity.blank()];
@@ -18,6 +18,8 @@ class NewGame extends StatefulWidget {
 class _NewGameState extends State<NewGame> {
   @override
   Widget build(BuildContext context) {
+    db.DatabaseConnection().database;
+
     TextEditingController gameName = TextEditingController();
 
     return Scaffold(
@@ -91,11 +93,14 @@ class _NewGameState extends State<NewGame> {
                 flex: 1,
                 child: ElevatedButton(
                   onPressed: () {
-                    database.DatabaseConnection.saveGame(
+                    db.DatabaseConnection.saveGame(
                       Game(
-                          name: gameName.text,
-                          dateStarted: DateTime.now(),
-                          players: _players),
+                        name: gameName.text,
+                        dateStarted: DateTime.now(),
+                        players: _players,
+                        nonPlayerCharacters: [],
+                        enemies: [],
+                      ),
                     );
                     Navigator.pop(context);
                   },

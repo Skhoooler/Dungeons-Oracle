@@ -25,8 +25,8 @@
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Sqflite-Flutter Example from Scratch](https://medium.com/py-bits/sqflite-flutter-example-from-scratch-71afa2ce2ea9)
+* [The ultimate guide to parse JSON](https://codewithandrea.com/articles/parse-json-dart/)
 
 # Future Work
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 import '../Utils/customWidgets.dart' as custom_widgets;
 import 'package:dungeons_oracle/Model/database.dart' as db;
@@ -16,11 +15,12 @@ class OpenExistingGame extends StatefulWidget {
 class _OpenExistingGameState extends State<OpenExistingGame> {
   @override
   Widget build(BuildContext context) {
-    List<Game> game;
+/*    List<Game> game;
     // ToDo: Get the result of the db query out of future
     db.DatabaseConnection.loadGames().then((value) {
       game = value;
-    });
+    });*/
+    db.DatabaseConnection().database;
 
     return Scaffold(
       appBar: AppBar(
@@ -52,15 +52,18 @@ class _OpenExistingGameState extends State<OpenExistingGame> {
                     if (snapshot.hasData) {
                       if (snapshot.data != null) {
                         children = [
-                          ListView.builder(
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (context, index) {
-                              return snapshot.data[index].displayGame();
-                            },
+                          Expanded(
+                            child: custom_widgets.DOContainer(
+                              child: ListView.builder(
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, index) {
+                                  return snapshot.data[index].displayGame();
+                                },
+                              ),
+                            ),
                           )
                         ];
-                      }
-                      else {
+                      } else {
                         children = [];
                       }
                     }
@@ -71,7 +74,10 @@ class _OpenExistingGameState extends State<OpenExistingGame> {
                         const Padding(
                           padding: EdgeInsets.only(
                               top: 16, bottom: 16, left: 16, right: 16),
-                          child: Text('No Games Found', style: TextStyle(fontSize: 32),),
+                          child: Text(
+                            'No Games Found',
+                            style: TextStyle(fontSize: 32),
+                          ),
                         ),
                       ];
                     }
@@ -85,8 +91,10 @@ class _OpenExistingGameState extends State<OpenExistingGame> {
                           child: CircularProgressIndicator(),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(top: 16, bottom: 16, left: 16, right: 16),
-                          child: Text('Awaiting result...', style: TextStyle(fontSize: 32)),
+                          padding: EdgeInsets.only(
+                              top: 16, bottom: 16, left: 16, right: 16),
+                          child: Text('Awaiting result...',
+                              style: TextStyle(fontSize: 32)),
                         )
                       ];
                     }

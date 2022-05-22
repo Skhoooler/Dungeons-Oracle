@@ -17,8 +17,10 @@ class DungeonsOracle extends StatelessWidget {
   // Root of application
   @override
   Widget build(BuildContext context) {
-    db.DatabaseConnection.instance;
+    /// Initialize Database
+    db.DatabaseConnection().database;
 
+    /// Start App
     return MaterialApp(
       title: 'Dungeon\'s Oracle',
       theme: themes.DungeonsOracleTheme.lightTheme,
