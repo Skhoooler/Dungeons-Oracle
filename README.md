@@ -8,6 +8,7 @@ had forms for the user to input information about players. The SQL database is c
 wants to get information about different games, the database is queried and the resulting data is parsed and returned to the user.
 
 [Dungeon's Oracle Dev Update 1 (Flutter)](https://youtu.be/d6MOE9t1lT8)
+
 [Dungeon's Oracle Dev Update 2 (SQL)](https://youtu.be/Hw4pzxDYGns)
 
 # Relational Database
